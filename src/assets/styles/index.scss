@@ -1,0 +1,166 @@
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+// Удаление "стрелочек" у input type="number"
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.app {
+  &__fractions-wrap {
+    display: flex;
+  }
+
+  &__fractions {
+    display: flex;
+    margin-right: 48px;
+
+    &::after {
+      content: '=';
+      position: absolute;
+      top: 25px;
+      right: -32px;
+      font-size: 32px;
+      font-weight: 400;
+    }
+  }
+
+  &__fraction {
+    &:not(:last-child) {
+      margin-right: 48px;
+
+      &::after {
+        content: '+';
+        position: absolute;
+        top: 25px;
+        right: -32px;
+        font-size: 32px;
+        font-weight: 400;
+      }
+    }
+
+    hr {
+      width: 40px;
+    }
+
+    input {
+      display: block;
+      height: 40px;
+      width: 40px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      margin: 0 auto;
+      background-color: transparent;
+      border: none;
+      border-radius: 50%;
+      transition-duration: 0.2s;
+
+      &:hover {
+        background-color: rgba(0,0,0,0.05);
+        cursor: pointer;
+
+        svg {
+          fill: rgba(0,0,0,0.6);
+        }
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+        fill: rgba(0,0,0,0.4);
+        transition-duration: 0.2s;
+      }
+    }
+
+    &-remove-wrap {
+      margin-top: 4px;
+      height: 24px;
+    }
+  }
+
+  &__result {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    &-value {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 12px;
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    &-reduced {
+      display: flex;
+      align-items: center;
+
+      &-integer {
+        margin-right: 8px;
+        margin-top: -4px;
+        font-size: 32px;
+        font-weight: bold;
+      }
+
+      &::before {
+        content: '=';
+        margin-top: -8px;
+        margin-left: 16px;
+        margin-right: 16px;
+        font-size: 32px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__add-more {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin-top: 16px;
+    font-size: 18px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0,0,0,0.05);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+
+      &:hover {
+        cursor: not-allowed;
+        background-color: transparent;
+      }
+    }
+  }
+}
